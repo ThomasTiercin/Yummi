@@ -6,7 +6,7 @@ class LoginPage extends React.Component {
     constructor(props) {
         super(props);
 
-        userService.logout();
+        // userService.logout();
 
         this.state = {
             username: 'test',
@@ -37,13 +37,13 @@ class LoginPage extends React.Component {
 
         this.setState({ loading: true });
         userService.login(username, password)
-            .then(
-                user => {
-                    const { from } = this.props.location.state || { from: { pathname: "/" } };
-                    this.props.history.push(from);
-                },
-                error => this.setState({ error, loading: false })
-            )
+        .then(
+            user => {
+                this.props.history.push("/");
+                this.props.history.go("/");
+            },
+            error => this.setState({ error, loading: false })
+        )
     }
 
     render() {

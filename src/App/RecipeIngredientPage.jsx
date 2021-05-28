@@ -14,14 +14,13 @@ class RecipeIngredientPage extends React.Component {
 
     componentDidMount(e) {
         this.setState({ 
-            user: JSON.parse(localStorage.getItem('user')),
             username: JSON.parse(localStorage.getItem('username'))
         });
         recipeIngredientService.getAll().then(recipeIngredients => this.setState({ recipeIngredients }));
     }
 
     render() {
-        const { user, recipeIngredients, username } = this.state;
+        const { recipeIngredients, username } = this.state;
         return (
             
             <div className="col-md-6 col-md-offset-3 justify-content-center">

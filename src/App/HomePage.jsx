@@ -14,7 +14,6 @@ class HomePage extends React.Component {
 
     componentDidMount() {
         this.setState({ 
-            user: JSON.parse(localStorage.getItem('user')),
             username: JSON.parse(localStorage.getItem('username')),
             users: { loading: true }
         });
@@ -22,7 +21,7 @@ class HomePage extends React.Component {
     }
 
     render() {
-        const { user, recipes, username } = this.state;
+        const { recipes, username } = this.state;
         
         return (
             
@@ -38,13 +37,17 @@ class HomePage extends React.Component {
                                     <img className="bd-placeholder-img card-img-top" width="100%" height="225" src="https://media-cdn.tripadvisor.com/media/photo-s/15/03/79/e3/otto-s-anatolian-food.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" ></img>
 
                                     <div className="card-body">
-                                        <p className="card-text">{recipe.name}</p>
+                                        <p className="card-text" style={{fontWeight: "bold"}}>{recipe.name}</p>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="btn-group">
                                                 <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
                                                 <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
                                             </div>
-                                            <small className="text-muted">9 mins</small>
+                                            <small className="text-muted">{new Intl.DateTimeFormat("en-GB", {
+                                                year: "numeric",
+                                                month: "long",
+                                                day: "2-digit"
+                                            }).format(new Date(recipe.createdDate))}</small>
                                         </div>
                                     </div>
                                 </div>

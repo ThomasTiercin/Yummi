@@ -20,11 +20,9 @@ function login(username, password) {
             if (user) {
                 // store user details and basic auth credentials in local storage 
                 // to keep user logged in between page refreshes
-                user.authdata = window.btoa(username + ':' + password);
-                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('token', JSON.stringify(user));            
                 localStorage.setItem('username', JSON.stringify(username));
             }
-
             return user;
         })
         .catch((error)=>{return Promise.reject(error)})
@@ -32,8 +30,9 @@ function login(username, password) {
 
 function logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('user');
-    localStorage.removeItem('username');
+    console.log("hello")
+    localStorage.removeItem('username');    
+    localStorage.removeItem('token');    
 }
 
 function getAll() {
@@ -47,6 +46,7 @@ function getAll() {
 function handleLogin(response) {
     return response.text().then(text => {
         const data = text;
+        console.log(data)
         if (!response.ok) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
@@ -56,7 +56,7 @@ function handleLogin(response) {
             const error = (data && data.message) || response.statusText;
             return Promise.reject("Username or password is incorrect");
         }
-        return response;
+        return data;
     });
 }
 
