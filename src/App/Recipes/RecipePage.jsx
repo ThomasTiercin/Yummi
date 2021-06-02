@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { recipeService } from '../_services';
+import { recipeService } from '../../_services';
 
 class RecipePage extends React.Component {
     constructor(props) {
