@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ingredientService } from '../_services';
+import { ingredientService } from '../../_services';
 
 class IngredientPage extends React.Component {
     constructor(props) {

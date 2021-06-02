@@ -3,7 +3,8 @@ import { authHeader } from '../_helpers';
 
 export const measureService = {
     getAll,
-    deleteMeasure
+    deleteMeasure,
+    getMeasureById
 };
 
 
@@ -14,6 +15,14 @@ function getAll() {
         headers: authHeader()
     };
     return fetch(`${config.apiUrl}/api/Measures`, requestOptions).then(handleResponse);
+}
+
+function getMeasureById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/Measures/${id}`, requestOptions).then(handleResponse);
 }
 
 function deleteMeasure(id) {

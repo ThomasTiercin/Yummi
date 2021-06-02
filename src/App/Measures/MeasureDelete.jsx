@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { measureService } from '../_services';
+import { measureService } from '../../_services';
 
 class MeasureDelete extends React.Component {
     constructor(props) {
