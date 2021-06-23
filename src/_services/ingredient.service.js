@@ -1,8 +1,12 @@
 import config from 'config';
-import { authHeader } from '../_helpers';
+import { authHeader, postAuthHeader } from '../_helpers';
 
 export const ingredientService = {
-    getAll
+    getAll,
+    deleteIngredient,
+    getIngredientById,
+    updateIngredient,
+    createIngredient
 };
 
 
@@ -13,6 +17,42 @@ function getAll() {
     };
     return fetch(`${config.apiUrl}/api/ingredients`, requestOptions).then(handleResponse);
 }
+
+
+function getIngredientById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/Ingredients/${id}`, requestOptions).then(handleResponse);
+}
+
+function deleteIngredient(id) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/Ingredients/${id}`, requestOptions).then(handleResponse);
+}
+
+function updateIngredient(id, ingredient) {
+    const requestOptions = {
+        method: 'PUT',
+        headers:   postAuthHeader(),
+        body: JSON.stringify(ingredient)
+    };
+    return fetch(`${config.apiUrl}/api/Ingredients/${id}`, requestOptions).then(handleResponse);
+}
+
+function createIngredient(ingredient) {
+    const requestOptions = {
+        method: 'POST',
+        headers:   postAuthHeader(),
+        body: JSON.stringify(ingredient)
+    };
+    return fetch(`${config.apiUrl}/api/Ingredients`, requestOptions).then(handleResponse);
+}
+
 
 function handleResponse(response) {
     return response.text().then(text => {

@@ -1,60 +1,54 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { measureService } from '../../_services';
+import { ingredientService } from '../../_services';
 
-class MeasureEdit extends React.Component {
+class IngredientCreate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             id : this.props.match.params.id,
-            measure: {id:'',name:''},
+            ingredient: {name:''},
             error: {}
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        measureService.getMeasureById(this.props.match.params.id).then(measure => this.setState({ measure }))        
-    }
-
     handleChange(e) {
         const { name, value } = e.target;
         this.setState({
-            ...this.measure,
-            measure: { ...this.state.measure, [name]: value },
+            ...this.ingredient,
+            ingredient: { ...this.state.ingredient, [name]: value },
         });
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const { id, measure } = this.state;
+        const { ingredient } = this.state;
         this.setState({ submitted: true });
-        measureService.updateMeasure(id, measure)
+        ingredientService.createIngredient(ingredient)
         .then(
             a => {
-                this.props.history.push("/measures");
+                this.props.history.push("/ingredients");
             },
             error => this.setState({ error })
         )
     }
 
     render() {
-        let { id, measure } = this.state;
         return (
             <div className="col-md-12">
-                <h1>Measure {id}</h1>
+                <h1>Add Ingredient </h1>
                 <form  onSubmit={this.handleSubmit} encType="multipart/form-data">
                      <div className='form-group'>
-                        <label htmlFor="name">Measure name :</label>
-                        <input type="text" className="form-control" name="name" defaultValue={measure.name} onChange={this.handleChange} required="required"/>
+                        <label htmlFor="name">Ingredient name :</label>
+                        <input type="text" className="form-control" name="name" onChange={this.handleChange} required="required"/>
                     </div>
-                    <button type="submit" className="btn btn-success">Update</button>
+                    <button type="submit" className="btn btn-success">Create</button>
                     <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
                 </form>
-                
             </div>
         );
     }
 }
-export { MeasureEdit }; 
+export { IngredientCreate }; 

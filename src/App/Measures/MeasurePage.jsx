@@ -28,10 +28,10 @@ class MeasurePage extends React.Component {
             )
         )
         return (
-            <div className="col-md-6 col-md-offset-3 justify-content-center">
+            <div className="col-md-12 ">
                 <h1>List of Measures</h1>
                 <div><Link to={'/createMeasure'} style={{color: "#212529"}}><i className="fas fa-plus"></i></Link></div>
-                <div className=".table-responsive">
+                <div className="table-responsive">
                     <table className="table caption-top">
                         <thead>
                             <tr>
@@ -45,6 +45,7 @@ class MeasurePage extends React.Component {
                             {content}
                         </tbody>
                     </table>
+                    <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
                 </div>
             </div>
             

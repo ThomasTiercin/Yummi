@@ -37,14 +37,15 @@ class MeasureCreate extends React.Component {
 
     render() {
         return (
-            <div className="col-md-6 col-md-offset-3 justify-content-center">
+            <div className="col-md-12">
                 <h1>Add Measure </h1>
                 <form  onSubmit={this.handleSubmit} encType="multipart/form-data">
                      <div className='form-group'>
                         <label htmlFor="name">Measure name :</label>
                         <input type="text" className="form-control" name="name" onChange={this.handleChange} required="required"/>
                     </div>
-                    <button type="submit" className="btn btn-primary">Create</button>
+                    <button type="submit" className="btn btn-success">Create</button>
+                    <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
                 </form>
             </div>
         );

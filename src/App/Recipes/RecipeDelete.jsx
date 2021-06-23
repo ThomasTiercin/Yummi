@@ -1,7 +1,7 @@
 import React from 'react';
-import { measureService } from '../../_services';
+import { recipeService } from '../../_services';
 
-class MeasureDelete extends React.Component {
+class RecipeDelete extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,10 +12,10 @@ class MeasureDelete extends React.Component {
     }
 
     handleDelete(id) {        
-        measureService.deleteMeasure(id)
+        recipeService.deleteRecipe(id)
         .then(
             user => {
-                this.props.history.push("/measures");
+                this.props.history.push("/recipes");
             },
             error => this.setState({ error, loading: false })
         )
@@ -29,4 +29,4 @@ class MeasureDelete extends React.Component {
         );
     }
 }
-export { MeasureDelete }; 
+export { RecipeDelete }; 
