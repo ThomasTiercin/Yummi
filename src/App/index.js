@@ -7,6 +7,7 @@ export * from './HomePage';
 export * from './Measures/MeasurePage';
 export * from './Measures/MeasureDelete';
 export * from './Measures/MeasureEdit';
+export * from './Measures/MeasureCreate';
 export * from './Ingredients/IngredientPage';
 export * from './Recipes/RecipePage';
 export * from './RecipeIngredients/RecipeIngredientPage';

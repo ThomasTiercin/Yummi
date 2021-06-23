@@ -22,14 +22,15 @@ class MeasurePage extends React.Component {
             <tr key={index}>
                 <th scope="row">{i++}</th>
                 <td>{measure.name}</td>
-                <td><Link to={'/editMeasure/'+measure.id} style={{color: "#212529"}}><i class="far fa-edit"></i></Link></td>
-                <td><Link to={'/deleteMeasure/'+measure.id} style={{color: "#212529"}}><i class="fas fa-trash"></i></Link></td>
+                <td><Link to={'/editMeasure/'+measure.id} style={{color: "#212529"}}><i className="far fa-edit"></i></Link></td>
+                <td><Link to={'/deleteMeasure/'+measure.id} style={{color: "#212529"}}><i className="fas fa-trash"></i></Link></td>
             </tr>
             )
         )
         return (
             <div className="col-md-6 col-md-offset-3 justify-content-center">
                 <h1>List of Measures</h1>
+                <div><Link to={'/createMeasure'} style={{color: "#212529"}}><i className="fas fa-plus"></i></Link></div>
                 <div className=".table-responsive">
                     <table className="table caption-top">
                         <thead>

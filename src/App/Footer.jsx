@@ -13,11 +13,11 @@ class Footer extends React.Component {
         const { year, applicationName,creator } = this.state;
         return (
             
-            <footer class="bg-light text-center text-white">    
-                <div class="text-center p-3 bg-dark text-white">
+            <footer className="bg-light text-center text-white">    
+                <div className="text-center p-3 bg-dark text-white">
                 © {year} - {applicationName} by 
                 <a> </a>
-                <a class="text-white" href="https://fr.linkedin.com/in/thomas-tiercin">{creator}</a>
+                <a className="text-white" href="https://fr.linkedin.com/in/thomas-tiercin">{creator}</a>
                 </div>
             </footer>
         )

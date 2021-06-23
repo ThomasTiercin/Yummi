@@ -2,20 +2,16 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { measureService } from '../../_services';
 
-class MeasureEdit extends React.Component {
+class MeasureCreate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             id : this.props.match.params.id,
-            measure: {id:'',name:''},
+            measure: {name:''},
             error: {}
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidMount() {
-        measureService.getMeasureById(this.props.match.params.id).then(measure => this.setState({ measure }))        
     }
 
     handleChange(e) {
@@ -28,9 +24,9 @@ class MeasureEdit extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const { id, measure } = this.state;
+        const { measure } = this.state;
         this.setState({ submitted: true });
-        measureService.updateMeasure(id, measure)
+        measureService.createMeasure(measure)
         .then(
             a => {
                 this.props.history.push("/measures");
@@ -40,19 +36,18 @@ class MeasureEdit extends React.Component {
     }
 
     render() {
-        let { id, measure } = this.state;
         return (
             <div className="col-md-6 col-md-offset-3 justify-content-center">
-                <h1>Measure {id}</h1>
+                <h1>Add Measure </h1>
                 <form  onSubmit={this.handleSubmit} encType="multipart/form-data">
                      <div className='form-group'>
                         <label htmlFor="name">Measure name :</label>
-                        <input type="text" className="form-control" name="name" defaultValue={measure.name} onChange={this.handleChange} required="required"/>
+                        <input type="text" className="form-control" name="name" onChange={this.handleChange} required="required"/>
                     </div>
-                    <button type="submit" className="btn btn-primary">Update</button>
+                    <button type="submit" className="btn btn-primary">Create</button>
                 </form>
             </div>
         );
     }
 }
-export { MeasureEdit }; 
+export { MeasureCreate }; 

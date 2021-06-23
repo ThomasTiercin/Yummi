@@ -2,7 +2,7 @@
 logs
 *.log
 npm-debug.log*
-
+webpack.config.js
 # Runtime data
 pids
 *.pid

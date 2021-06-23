@@ -5,9 +5,6 @@ import { userService } from '../_services';
 class LoginPage extends React.Component {
     constructor(props) {
         super(props);
-
-        // userService.logout();
-
         this.state = {
             username: 'test',
             password: 'test',
@@ -15,7 +12,6 @@ class LoginPage extends React.Component {
             loading: false,
             error: ''
         };
-
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }

@@ -17,7 +17,6 @@ class MeasureDelete extends React.Component {
         .then(
             user => {
                 this.props.history.push("/measures");
-                this.props.history.go("/measures");
             },
             error => this.setState({ error, loading: false })
         )
@@ -25,8 +24,8 @@ class MeasureDelete extends React.Component {
     render() {
         const{currentId} = this.state;
         return (
-            <div onLoad={this.handleDelete(currentId)} class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
+            <div onLoad={this.handleDelete(currentId)} className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
             </div>
         );
     }
