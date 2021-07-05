@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { PrivateRoute } from '../_components';
-import { HomePage, LoginPage, Logout, MeasurePage, MeasureDelete, MeasureEdit, MeasureCreate, RecipePage, RecipeDelete, RecipeEdit, RecipeCreate, IngredientPage,
+import { SignupPage, HomePage, LoginPage, Logout, MeasurePage, MeasureDelete, MeasureEdit, MeasureCreate, RecipePage, RecipeDelete, RecipeEdit, RecipeCreate, IngredientPage,
      IngredientDelete, IngredientEdit, IngredientCreate, RecipeIngredientPage, RecipeIngredientDelete, RecipeIngredientEdit, RecipeIngredientCreate, RecipeView } from './';
 
 class App extends React.Component {
@@ -14,6 +14,7 @@ class App extends React.Component {
                             <div>
                                 <Route exact path="/" component={HomePage} />
                                 <Route path="/login" component={LoginPage} />
+                                <Route path="/signup" component={SignupPage} />
                                 <PrivateRoute path="/logout" component={Logout} />
                                 <PrivateRoute path="/measures" component={MeasurePage} />
                                 <PrivateRoute path="/deleteMeasure/:id" component={MeasureDelete} />

@@ -2,6 +2,7 @@ export * from './App';
 export * from './Header';
 export * from './Footer';
 export * from './LoginPage';
+export * from './SignupPage';
 export * from './Logout';
 export * from './HomePage';
 export * from './Measures/MeasurePage';

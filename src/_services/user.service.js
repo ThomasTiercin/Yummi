@@ -4,7 +4,8 @@ import { authHeader } from '../_helpers';
 export const userService = {
     login,
     logout,
-    getAll
+    getAll,
+    signup
 };
 
 function login(username, password) {
@@ -28,9 +29,30 @@ function login(username, password) {
         .catch((error)=>{return Promise.reject(error)})
 }
 
+function signup(username, password) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, "role": "user" })
+    };
+    return fetch(`${config.apiUrl}/api/Users`, requestOptions)
+        .then(handleLogin)
+        .then(user => {
+            console.log(user)
+            // login successful if there's a user in the response
+            if (user) {
+                // store user details and basic auth credentials in local storage 
+                // to keep user logged in between page refreshes
+                localStorage.setItem('token', JSON.stringify(user));            
+                localStorage.setItem('username', JSON.stringify(username));
+            }
+            return user;
+        })
+        .catch((error)=>{return Promise.reject(error)})
+}
+
 function logout() {
     // remove user from local storage to log user out
-    console.log("hello")
     localStorage.removeItem('username');    
     localStorage.removeItem('token');    
 }
@@ -51,6 +73,9 @@ function handleLogin(response) {
                 // auto logout if 401 response returned from api
                 logout();
                 location.reload(true);
+            }
+            if (response.status === 400){
+                logout();     
             }
             const error = (data && data.message) || response.statusText;
             return Promise.reject("Username or password is incorrect");
