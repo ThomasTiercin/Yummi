@@ -1,30 +1,23 @@
 import React from 'react';
 import { recipeService } from '../_services';
+import { Link } from "react-router-dom";
 
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             user: {},
-            username: "",
             recipes: []
         };
     }
 
     componentDidMount() {
-        this.setState({ 
-            username: JSON.parse(localStorage.getItem('username')),
-            users: { loading: true }
-        });
         recipeService.getAll().then(recipes => this.setState({ recipes }));
     }
 
     render() {
-        const { recipes, username } = this.state;
-        
+        const { recipes } = this.state;
         return (
-            
             <div className="album py-5">
                 <h4 className="display-4 text-center">Welcome on Yummi &#128523;</h4>
                 <div className="container">
@@ -41,7 +34,7 @@ class HomePage extends React.Component {
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="btn-group">
                                                 <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                                                <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                                                <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={'/editRecipe/'+recipe.id} style={{textDecoration: 'auto', color: 'dimgray'}}>Edit</Link></button>
                                             </div>
                                             <small className="text-muted">{new Intl.DateTimeFormat("en-GB", {
                                                 year: "numeric",

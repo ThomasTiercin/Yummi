@@ -17,3 +17,6 @@ export * from './Recipes/RecipeDelete';
 export * from './Recipes/RecipeEdit';
 export * from './Recipes/RecipeCreate';
 export * from './RecipeIngredients/RecipeIngredientPage';
+export * from './RecipeIngredients/RecipeIngredientDelete';
+export * from './RecipeIngredients/RecipeIngredientEdit';
+export * from './RecipeIngredients/RecipeIngredientCreate';

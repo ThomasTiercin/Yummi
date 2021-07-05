@@ -1,40 +1,61 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 import { recipeIngredientService } from '../../_services';
-
 class RecipeIngredientPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {},
-            username: "",
+            i: 1,
             recipeIngredients: []
         };
     }
 
     componentDidMount(e) {
-        this.setState({ 
-            username: JSON.parse(localStorage.getItem('username'))
-        });
         recipeIngredientService.getAll().then(recipeIngredients => this.setState({ recipeIngredients }));
     }
 
     render() {
-        const { recipeIngredients, username } = this.state;
+        const { recipeIngredients } = this.state;
+        let { i } = this.state;
+        const content = recipeIngredients.map((recipeIngredient, index) => 
+            (
+            <tr key={index}>
+                <th scope="row">{i++}</th>
+                <td>{recipeIngredient.amount}</td>
+                <td>{recipeIngredient.recipeId}</td>
+                <td>{recipeIngredient.ingredientId}</td>
+                <td>{recipeIngredient.measureId}</td>                
+                <td><Link to={'/editRecipeIngredient/'+recipeIngredient.id} style={{color: "#212529"}}><i className="far fa-edit"></i></Link></td>
+                <td><Link to={'/deleteRecipeIngredient/'+recipeIngredient.id} style={{color: "#212529"}}><i className="fas fa-trash"></i></Link></td>
+            </tr>
+            )
+        )
         return (
-            
-            <div className="col-md-6 col-md-offset-3 justify-content-center">
-                <h1>List of Recipe Ingredient</h1>
-                <ul>
-                    {recipeIngredients.map((recipeIngredient, index) =>
-                        <li key={recipeIngredient.id}>
-                            {recipeIngredient.amount}
-                        </li>
-                    )}
-                </ul>
+            <div className="col-md-12 ">
+                <h1>List of RecipeIngredients</h1>
+                <div><Link to={'/createRecipeIngredient'} style={{color: "#212529"}}><i className="fas fa-plus"></i></Link></div>
+                <div className="table-responsive">
+                    <table className="table caption-top">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">recipeId</th>
+                                <th scope="col">ingredientId</th>
+                                <th scope="col">measureId</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {content}
+                        </tbody>
+                    </table>
+                    <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
+                </div>
             </div>
+            
         );
     }
 }
-
 export { RecipeIngredientPage }; 

@@ -50,9 +50,9 @@ class MeasureEdit extends React.Component {
                         <input type="text" className="form-control" name="name" defaultValue={measure.name} onChange={this.handleChange} required="required"/>
                     </div>
                     <button type="submit" className="btn btn-success">Update</button>
-                    <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
+                    
                 </form>
-                
+                <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>                
             </div>
         );
     }

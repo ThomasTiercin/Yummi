@@ -45,8 +45,9 @@ class MeasureCreate extends React.Component {
                         <input type="text" className="form-control" name="name" onChange={this.handleChange} required="required"/>
                     </div>
                     <button type="submit" className="btn btn-success">Create</button>
-                    <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
+                    
                 </form>
+                <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
             </div>
         );
     }

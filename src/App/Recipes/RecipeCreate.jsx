@@ -41,13 +41,15 @@ class RecipeCreate extends React.Component {
                 <h1>Add Recipe </h1>
                 <form  onSubmit={this.handleSubmit} encType="multipart/form-data">
                      <div className='form-group'>
-                        <label htmlFor="name">Recipe name :</label>
+                        <label htmlFor="name">Name :</label>
                         <input type="text" className="form-control" name="name" onChange={this.handleChange} required="required"/>
+                        <label htmlFor="description">Description :</label>
                         <input type="text" className="form-control" name="description" onChange={this.handleChange} required="required"/>
                     </div>
                     <button type="submit" className="btn btn-success">Create</button>
-                    <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
+                    
                 </form>
+                <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
             </div>
         );
     }

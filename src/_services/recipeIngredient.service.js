@@ -1,8 +1,12 @@
 import config from 'config';
-import { authHeader } from '../_helpers';
+import { authHeader, postAuthHeader } from '../_helpers';
 
 export const recipeIngredientService = {
-    getAll
+    getAll,
+    deleteRecipeIngredient,
+    getRecipeIngredientById,
+    updateRecipeIngredient,
+    createRecipeIngredient
 };
 
 
@@ -10,6 +14,40 @@ function getAll() {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/RecipeIngredients`, requestOptions).then(handleResponse);
+}
+
+function getRecipeIngredientById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/RecipeIngredients/${id}`, requestOptions).then(handleResponse);
+}
+
+function deleteRecipeIngredient(id) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/RecipeIngredients/${id}`, requestOptions).then(handleResponse);
+}
+
+function updateRecipeIngredient(id, recipeIngredient) {
+    const requestOptions = {
+        method: 'PUT',
+        headers:   postAuthHeader(),
+        body: JSON.stringify(recipeIngredient)
+    };
+    return fetch(`${config.apiUrl}/api/RecipeIngredients/${id}`, requestOptions).then(handleResponse);
+}
+
+function createRecipeIngredient(recipeIngredient) {
+    const requestOptions = {
+        method: 'POST',
+        headers:   postAuthHeader(),
+        body: JSON.stringify(recipeIngredient)
     };
     return fetch(`${config.apiUrl}/api/RecipeIngredients`, requestOptions).then(handleResponse);
 }

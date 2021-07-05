@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { recipeService } from '../../_services';
 
 class RecipeEdit extends React.Component {
@@ -46,13 +45,15 @@ class RecipeEdit extends React.Component {
                 <h1>Recipe {id}</h1>
                 <form  onSubmit={this.handleSubmit} encType="multipart/form-data">
                      <div className='form-group'>
-                        <label htmlFor="name">Recipe name :</label>
+                        <label htmlFor="name">Name :</label>
                         <input type="text" className="form-control" name="name" defaultValue={recipe.name} onChange={this.handleChange} required="required"/>
+                        <label htmlFor="description">Description :</label>
                         <input type="text" className="form-control" name="description" defaultValue={recipe.description} onChange={this.handleChange} required="required"/>
                     </div>
                     <button type="submit" className="btn btn-success">Update</button>
-                    <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
+                    
                 </form>
+                <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
                 
             </div>
         );
