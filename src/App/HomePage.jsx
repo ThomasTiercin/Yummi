@@ -33,7 +33,7 @@ class HomePage extends React.Component {
                                         <p className="card-text" style={{fontWeight: "bold"}}>{recipe.name}</p>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="btn-group">
-                                                <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
+                                                <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={'/viewRecipe/'+recipe.id} style={{textDecoration: 'auto', color: 'dimgray'}}>View</Link></button>
                                                 <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={'/editRecipe/'+recipe.id} style={{textDecoration: 'auto', color: 'dimgray'}}>Edit</Link></button>
                                             </div>
                                             <small className="text-muted">{new Intl.DateTimeFormat("en-GB", {

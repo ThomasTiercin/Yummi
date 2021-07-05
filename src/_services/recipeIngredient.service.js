@@ -6,7 +6,8 @@ export const recipeIngredientService = {
     deleteRecipeIngredient,
     getRecipeIngredientById,
     updateRecipeIngredient,
-    createRecipeIngredient
+    createRecipeIngredient,
+    getRecipeIngredientByRecipe
 };
 
 
@@ -24,6 +25,14 @@ function getRecipeIngredientById(id) {
         headers: authHeader()
     };
     return fetch(`${config.apiUrl}/api/RecipeIngredients/${id}`, requestOptions).then(handleResponse);
+}
+
+function getRecipeIngredientByRecipe(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/Recipe/${id}/recipeIngredients`, requestOptions).then(handleResponse);
 }
 
 function deleteRecipeIngredient(id) {
@@ -61,7 +70,6 @@ function handleResponse(response) {
                 logout();
                 location.reload(true);
             }
-            console.log(text)
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
