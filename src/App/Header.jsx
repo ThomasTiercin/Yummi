@@ -4,17 +4,38 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: ""
+            username: "",
+            role: ""
         };
     }
     
     componentDidMount(e) {
         this.setState({ 
-            username: JSON.parse(localStorage.getItem('username'))
+            username: JSON.parse(localStorage.getItem('username')),
+            role: atob(localStorage.getItem('role'))
         });
     }
     render() {
-        const { username } = this.state;
+        const { username, role } = this.state;
+        console.log(role)
+        let admin = ""
+        if (role=='admin') {
+            admin =  
+            (
+                <span className="dropdown ">
+                <a className=" nav-link px-2 text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Administration
+                </a>
+                <ul className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                    {username && <li><a href="/measures" className="nav-link px-2 text-white">Measures</a></li>}
+                    {username && <li><a href="/ingredients" className="nav-link px-2 text-white">Ingredients</a></li>}
+                    {username && <li><a href="/recipes" className="nav-link px-2 text-white">Recipes</a></li>}
+                    {username && <li><a href="/recipeIngredients" className="nav-link px-2 text-white">Recipe Ingredients</a></li>}
+                </ul>
+            </span>
+            )
+        }
+
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
@@ -24,20 +45,11 @@ class Header extends React.Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarYummi">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {username &&
-                                <li><a href="/measures" className="nav-link px-2 text-white">Measures</a></li>
-                            }
-                            {username &&
-                                <li><a href="/ingredients" className="nav-link px-2 text-white">Ingredients</a></li>
-                            }
-                            {username &&
-                                <li><a href="/recipes" className="nav-link px-2 text-white">Recipes</a></li>
-                            }
-                            {username &&
-                                <li><a href="/recipeIngredients" className="nav-link px-2 text-white">Recipe Ingredients</a></li>
-                            }
+                            <li><a href="#" className="nav-link px-2 text-white">Cart</a></li>
+                            <li><a href="#" className="nav-link px-2 text-white">Planning</a></li>
                         </ul>
                         <div className="d-flex">
+                            {admin}
                             {username && <a className="nav-link disabled px-2 text-white">{username} &nbsp;&nbsp;</a>}
                             {username &&
                                 <a href="/logout" className="btn btn-outline-danger me-2">Logout</a>

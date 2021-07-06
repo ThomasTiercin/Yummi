@@ -5,7 +5,8 @@ export const userService = {
     login,
     logout,
     getAll,
-    signup
+    signup,
+    getUserByUsername
 };
 
 function login(username, password) {
@@ -17,6 +18,10 @@ function login(username, password) {
     return fetch(`${config.apiUrl}/user`, requestOptions)
         .then(handleLogin)
         .then(user => {
+            getUserByUsername(username)
+            .then(user=>{
+                localStorage.setItem('role', btoa(encodeURIComponent(user.role)));
+            })
             // login successful if there's a user in the response
             if (user) {
                 // store user details and basic auth credentials in local storage 
@@ -38,7 +43,6 @@ function signup(username, password) {
     return fetch(`${config.apiUrl}/api/Users`, requestOptions)
         .then(handleLogin)
         .then(user => {
-            console.log(user)
             // login successful if there's a user in the response
             if (user) {
                 // store user details and basic auth credentials in local storage 
@@ -54,7 +58,16 @@ function signup(username, password) {
 function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('username');    
+    localStorage.removeItem('role');    
     localStorage.removeItem('token');    
+}
+
+function getUserByUsername(username) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/user/${username}`, requestOptions).then(handleResponse);
 }
 
 function getAll() {

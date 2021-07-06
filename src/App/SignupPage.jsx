@@ -45,8 +45,10 @@ class SignupPage extends React.Component {
                 this.setState({ error, loading: false })
             })
         })
-        .catch(e=>{console.log(e)})
-        
+        .catch(error=>{
+            error = "Something go wrong ! Maybe this username is already taken."
+            this.setState({ error, loading: false })
+        })
     }
 
     render() {
