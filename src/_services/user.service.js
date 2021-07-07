@@ -6,7 +6,11 @@ export const userService = {
     logout,
     getAll,
     signup,
-    getUserByUsername
+    getUserByUsername,
+    deleteUser,
+    createUser,
+    editUser,
+    getUserById
 };
 
 function login(username, password) {
@@ -32,6 +36,40 @@ function login(username, password) {
             return user;
         })
         .catch((error)=>{return Promise.reject(error)})
+}
+
+function deleteUser(id) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/users/${id}`, requestOptions).then(handleResponse);
+}
+
+function getUserById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/users/${id}`, requestOptions).then(handleResponse);
+}
+
+function createUser(user) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+    };
+    return fetch(`${config.apiUrl}/api/Users`, requestOptions).then(handleResponse);
+}
+
+function editUser(id, user) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+    };
+    return fetch(`${config.apiUrl}/api/Users/${id}`, requestOptions).then(handleResponse);
 }
 
 function signup(username, password) {

@@ -17,7 +17,6 @@ class Header extends React.Component {
     }
     render() {
         const { username, role } = this.state;
-        console.log(role)
         let admin = ""
         if (role=='admin') {
             admin =  
@@ -32,6 +31,7 @@ class Header extends React.Component {
                     {username && <li><a href="/recipes" className="nav-link px-2 text-white">Recipes</a></li>}
                     {username && <li><a href="/recipeIngredients" className="nav-link px-2 text-white">Recipe Ingredients</a></li>}
                     {username && <li><a href="/recipeInstructions" className="nav-link px-2 text-white">Recipe Instructions</a></li>}
+                    {username && <li><a href="/users" className="nav-link px-2 text-white">Users</a></li>}
                 </ul>
             </span>
             )
