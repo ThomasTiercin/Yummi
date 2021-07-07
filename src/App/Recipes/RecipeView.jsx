@@ -1,5 +1,5 @@
 import React from 'react';
-import { recipeIngredientService, recipeService, ingredientService, measureService} from '../../_services';
+import { recipeIngredientService, recipeService, recipeInstructionService} from '../../_services';
 
 class RecipeView extends React.Component {
     constructor(props) {
@@ -7,17 +7,19 @@ class RecipeView extends React.Component {
         this.state = {
             id : this.props.match.params.id,
             recipeIngredients: [],
+            recipeInstructions: [],
             recipe: {}
         };
     }
 
     componentDidMount() {
         recipeIngredientService.getRecipeIngredientByRecipe(this.props.match.params.id).then(recipeIngredients => this.setState({ recipeIngredients })) 
+        recipeInstructionService.getRecipeInstructionByRecipe(this.props.match.params.id).then(recipeInstructions => this.setState({ recipeInstructions })) 
         recipeService.getRecipeById(this.props.match.params.id).then(recipe => this.setState({ recipe }));
     }
 
     render() {
-        const { id, recipe, recipeIngredients } = this.state;
+        const { id, recipe, recipeIngredients, recipeInstructions } = this.state;
         return (
             <div className="col-md-12">                
                 <div className="row g-5">
@@ -28,6 +30,9 @@ class RecipeView extends React.Component {
                             <p>{recipe.description}</p>
                             <hr/>
                             <h3>Instructions</h3>
+                            {recipeInstructions.map((recipeInstruction, index) =>
+                                <li key={index}>{recipeInstruction.value}</li>
+                            )} 
                         </div>
                     </div>
 

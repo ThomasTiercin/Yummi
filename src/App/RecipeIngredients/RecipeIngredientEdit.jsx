@@ -73,7 +73,7 @@ class RecipeIngredientEdit extends React.Component {
                             )}
                         </select>
                         <label htmlFor="name">Amount :</label>
-                        <input type="number" className="form-control" name="amount" defaultValue={recipeIngredient.amount} onChange={this.handleChange} required="required"/>
+                        <input type="number" className="form-control" name="amount" value={recipeIngredient.amount} onChange={this.handleChange} required="required"/>
                     </div>
                     <button type="submit" className="btn btn-success">Update</button>
                     

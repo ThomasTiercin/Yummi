@@ -21,10 +21,10 @@ class RecipeIngredientPage extends React.Component {
             (
             <tr key={index}>
                 <th scope="row">{i++}</th>
+                <td>{recipeIngredient.recipe.name}</td>
                 <td>{recipeIngredient.amount}</td>
-                <td>{recipeIngredient.recipeId}</td>
-                <td>{recipeIngredient.ingredientId}</td>
-                <td>{recipeIngredient.measureId}</td>                
+                <td>{recipeIngredient.measure.name}</td>  
+                <td>{recipeIngredient.ingredient.name}</td>                              
                 <td><Link to={'/editRecipeIngredient/'+recipeIngredient.id} style={{color: "#212529"}}><i className="far fa-edit"></i></Link></td>
                 <td><Link to={'/deleteRecipeIngredient/'+recipeIngredient.id} style={{color: "#212529"}}><i className="fas fa-trash"></i></Link></td>
             </tr>
@@ -39,10 +39,10 @@ class RecipeIngredientPage extends React.Component {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">recipe</th>
                                 <th scope="col">Amount</th>
-                                <th scope="col">recipeId</th>
-                                <th scope="col">ingredientId</th>
-                                <th scope="col">measureId</th>
+                                <th scope="col">measure</th>                                
+                                <th scope="col">ingredient</th>                                
                                 <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>

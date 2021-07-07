@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { LoginRoute, AdminRoute } from '../_components';
 import { SignupPage, HomePage, LoginPage, Logout, MeasurePage, MeasureDelete, MeasureEdit, MeasureCreate, RecipePage, RecipeDelete, RecipeEdit, RecipeCreate, IngredientPage,
-     IngredientDelete, IngredientEdit, IngredientCreate, RecipeIngredientPage, RecipeIngredientDelete, RecipeIngredientEdit, RecipeIngredientCreate, RecipeView } from './';
+     IngredientDelete, IngredientEdit, IngredientCreate, RecipeIngredientPage, RecipeIngredientDelete, RecipeIngredientEdit, RecipeIngredientCreate, 
+     RecipeInstructionPage, RecipeInstructionDelete, RecipeInstructionEdit, RecipeInstructionCreate, RecipeView } from './';
 
 class App extends React.Component {
     render() {
@@ -33,6 +34,10 @@ class App extends React.Component {
                                 <AdminRoute path="/deleteRecipeIngredient/:id" component={RecipeIngredientDelete} />
                                 <AdminRoute path="/editRecipeIngredient/:id" component={RecipeIngredientEdit} />
                                 <AdminRoute path="/createRecipeIngredient" component={RecipeIngredientCreate} />
+                                <AdminRoute path="/recipeInstructions" component={RecipeInstructionPage} />
+                                <AdminRoute path="/deleteRecipeInstruction/:id" component={RecipeInstructionDelete} />
+                                <AdminRoute path="/editRecipeInstruction/:id" component={RecipeInstructionEdit} />
+                                <AdminRoute path="/createRecipeInstruction" component={RecipeInstructionCreate} />
                             </div>
                         </Router>
                 </div>

@@ -31,6 +31,7 @@ class Header extends React.Component {
                     {username && <li><a href="/ingredients" className="nav-link px-2 text-white">Ingredients</a></li>}
                     {username && <li><a href="/recipes" className="nav-link px-2 text-white">Recipes</a></li>}
                     {username && <li><a href="/recipeIngredients" className="nav-link px-2 text-white">Recipe Ingredients</a></li>}
+                    {username && <li><a href="/recipeInstructions" className="nav-link px-2 text-white">Recipe Instructions</a></li>}
                 </ul>
             </span>
             )

@@ -22,3 +22,7 @@ export * from './RecipeIngredients/RecipeIngredientPage';
 export * from './RecipeIngredients/RecipeIngredientDelete';
 export * from './RecipeIngredients/RecipeIngredientEdit';
 export * from './RecipeIngredients/RecipeIngredientCreate';
+export * from './RecipeInstructions/RecipeInstructionPage';
+export * from './RecipeInstructions/RecipeInstructionDelete';
+export * from './RecipeInstructions/RecipeInstructionEdit';
+export * from './RecipeInstructions/RecipeInstructionCreate';
