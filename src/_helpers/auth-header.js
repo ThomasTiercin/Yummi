@@ -16,7 +16,7 @@ export function postAuthHeader() {
     let token = JSON.parse(localStorage.getItem('token'));
 
     if (username && token) {
-        return {  'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token };
+        return {  'Content-Type': 'application/json','Accept': 'application/json', 'Authorization': 'Bearer ' + token };
     } else {
         return {};
     }

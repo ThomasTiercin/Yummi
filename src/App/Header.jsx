@@ -46,7 +46,7 @@ class Header extends React.Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarYummi">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li><a href="#" className="nav-link px-2 text-white">Cart</a></li>
+                            <li><a href="/baskets" className="nav-link px-2 text-white">Cart</a></li>
                             <li><a href="#" className="nav-link px-2 text-white">Planning</a></li>
                         </ul>
                         <div className="d-flex">

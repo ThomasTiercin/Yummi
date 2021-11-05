@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { LoginRoute, AdminRoute } from '../_components';
 import { SignupPage, HomePage, LoginPage, Logout, MeasurePage, MeasureDelete, MeasureEdit, MeasureCreate, RecipePage, RecipeDelete, RecipeEdit, RecipeCreate, IngredientPage,
      IngredientDelete, IngredientEdit, IngredientCreate, RecipeIngredientPage, RecipeIngredientDelete, RecipeIngredientEdit, RecipeIngredientCreate, 
-     RecipeInstructionPage, RecipeInstructionDelete, RecipeInstructionEdit, RecipeInstructionCreate, RecipeView, UserPage, UserDelete, UserCreate, UserEdit } from './';
+     RecipeInstructionPage, RecipeInstructionDelete, RecipeInstructionEdit, RecipeInstructionCreate, RecipeView, UserPage, UserDelete, UserCreate, UserEdit,
+     BasketPage, BasketCreate, BasketEdit, BasketDelete} from './';
 
 class App extends React.Component {
     render() {
@@ -42,6 +43,10 @@ class App extends React.Component {
                                 <AdminRoute path="/deleteUser/:id" component={UserDelete} />
                                 <AdminRoute path="/editUser/:id" component={UserEdit} />
                                 <AdminRoute path="/createUser" component={UserCreate} />
+                                <AdminRoute path="/baskets" component={BasketPage} />
+                                <AdminRoute path="/deleteBasket/:id" component={BasketDelete} />
+                                <AdminRoute path="/editBasket/:id" component={BasketEdit} />
+                                <AdminRoute path="/createBasket" component={BasketCreate} />
                             </div>
                         </Router>
                 </div>

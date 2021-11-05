@@ -25,6 +25,7 @@ function login(username, password) {
             getUserByUsername(username)
             .then(user=>{
                 localStorage.setItem('role', btoa(encodeURIComponent(user.role)));
+                localStorage.setItem('id', JSON.stringify(user.id));
             })
             // login successful if there's a user in the response
             if (user) {
@@ -81,14 +82,22 @@ function signup(username, password) {
     return fetch(`${config.apiUrl}/api/Users`, requestOptions)
         .then(handleLogin)
         .then(user => {
-            // login successful if there's a user in the response
-            if (user) {
-                // store user details and basic auth credentials in local storage 
-                // to keep user logged in between page refreshes
-                localStorage.setItem('token', JSON.stringify(user));            
-                localStorage.setItem('username', JSON.stringify(username));
-            }
-            return user;
+            getUserByUsername(username)
+            .then(user=>{
+                localStorage.setItem('role', btoa(encodeURIComponent(user.role)));
+                localStorage.setItem('id', JSON.stringify(user.id));
+            })
+            .then(()=>{
+                // login successful if there's a user in the response
+                if (user) {
+                    // store user details and basic auth credentials in local storage 
+                    // to keep user logged in between page refreshes
+                    localStorage.setItem('token', JSON.stringify(user));            
+                    localStorage.setItem('username', JSON.stringify(username));
+                }
+                return user;
+            })
+            
         })
         .catch((error)=>{return Promise.reject(error)})
 }
@@ -97,6 +106,7 @@ function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('username');    
     localStorage.removeItem('role');    
+    localStorage.removeItem('id');    
     localStorage.removeItem('token');    
 }
 

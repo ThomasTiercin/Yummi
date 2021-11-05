@@ -29,7 +29,7 @@ class UserEdit extends React.Component {
         e.preventDefault();
         const { id, user } = this.state;
         this.setState({ submitted: true });
-        userService.updateUser(id, user)
+        userService.editUser(id, user)
         .then(
             a => {
                 this.props.history.push("/users");
