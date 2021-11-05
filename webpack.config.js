@@ -3,6 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
+    entry: ['@babel/polyfill', './src/index.jsx'],    
     resolve: {
         extensions: ['.js', '.jsx']
     },
@@ -10,7 +11,7 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                loader: 'babel-loader'
+                loader: "babel-loader"	
             }
         ]
     },
