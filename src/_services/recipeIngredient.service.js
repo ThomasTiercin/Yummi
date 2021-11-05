@@ -1,4 +1,4 @@
-import config from 'config';
+import config from '../config.json';
 import { authHeader, postAuthHeader } from '../_helpers';
 
 export const recipeIngredientService = {
@@ -10,6 +10,13 @@ export const recipeIngredientService = {
     getRecipeIngredientByRecipe
 };
 
+function logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('username');    
+    localStorage.removeItem('role');    
+    localStorage.removeItem('id');    
+    localStorage.removeItem('token');    
+}
 
 function getAll() {
     const requestOptions = {
@@ -68,7 +75,7 @@ function handleResponse(response) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
                 logout();
-                location.reload(true);
+                return Promise.reject(error);
             }
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
