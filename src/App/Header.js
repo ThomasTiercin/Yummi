@@ -21,19 +21,18 @@ class Header extends React.Component {
         if (role=='admin') {
             admin =  
             (
-                <span className="dropdown ">
-                <a className=" nav-link px-2 text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Administration
-                </a>
-                <ul className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                    {username && <li><a href="/measures" className="nav-link px-2 text-white">Measures</a></li>}
-                    {username && <li><a href="/ingredients" className="nav-link px-2 text-white">Ingredients</a></li>}
-                    {username && <li><a href="/recipes" className="nav-link px-2 text-white">Recipes</a></li>}
-                    {username && <li><a href="/recipeIngredients" className="nav-link px-2 text-white">Recipe Ingredients</a></li>}
-                    {username && <li><a href="/recipeInstructions" className="nav-link px-2 text-white">Recipe Instructions</a></li>}
-                    {username && <li><a href="/users" className="nav-link px-2 text-white">Users</a></li>}
-                </ul>
-            </span>
+                <span className="nav-item dropdown">
+                    <div className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Administration</div>
+                    <ul className="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        {username && <li><a href="/measures" className="dropdown-item bg-dark text-white">Measures</a></li>}
+                        {username && <li><a href="/ingredients" className="dropdown-item bg-dark text-white">Ingredients</a></li>}
+                        {username && <li><a href="/recipes" className="dropdown-item bg-dark text-white">Recipes</a></li>}
+                        {username && <li><a href="/recipeIngredients" className="dropdown-item bg-dark text-white">Recipe Ingredients</a></li>}
+                        {username && <li><a href="/recipeInstructions" className="dropdown-item bg-dark text-white">Recipe Instructions</a></li>}
+                        {username && <li><a href="/users" className="dropdown-item bg-dark text-white">Users</a></li>}
+                    </ul>
+                </span>
+                
             )
         }
 
@@ -69,4 +68,4 @@ class Header extends React.Component {
     }
 }
 
-export { Header }; 
+export default Header ; 

@@ -1,4 +1,4 @@
-import config from 'config';
+import config from '../config.json';
 import { authHeader } from '../_helpers';
 
 export const userService = {
@@ -133,7 +133,7 @@ function handleLogin(response) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
                 logout();
-                location.reload(true);
+                return Promise.reject(error);
             }
             if (response.status === 400){
                 logout();     
@@ -152,7 +152,7 @@ function handleResponse(response) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
                 logout();
-                location.reload(true);
+                return Promise.reject(error);
             }
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);

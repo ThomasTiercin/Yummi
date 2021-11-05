@@ -9,27 +9,52 @@ class RecipeView extends React.Component {
             id : this.props.match.params.id,
             recipeIngredients: [],
             recipeInstructions: [],
+            contentEditable: false,
+            role: "",
             recipe: {id:'',name:'',description:'', image:'', createdDate:''}
         };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmitRecipe = this.handleSubmitRecipe.bind(this);
     }
 
     componentDidMount() {
         recipeIngredientService.getRecipeIngredientByRecipe(this.props.match.params.id).then(recipeIngredients => this.setState({ recipeIngredients })) 
         recipeInstructionService.getRecipeInstructionByRecipe(this.props.match.params.id).then(recipeInstructions => this.setState({ recipeInstructions })) 
         recipeService.getRecipeById(this.props.match.params.id).then(recipe => this.setState({ recipe }));
+        this.state.role = atob(localStorage.getItem('role'))
+    }
+
+    handleChange(name, value) {
+        this.setState({
+            ...this.recipe,
+            recipe: { ...this.state.recipe, [name]: value },
+        });
+    }
+
+    handleSubmitRecipe() {
+        const { id, recipe } = this.state;
+        console.log(id+recipe)
+        recipeService.updateRecipe(id, recipe)
+        .then(
+            a => {
+                this.props.history.push('/viewRecipe/'+id);
+            },
+            error => this.setState({ error })
+        )
     }
 
     render() {
-        let { recipe, recipeIngredients, recipeInstructions } = this.state;
+        let { recipe, recipeIngredients, recipeInstructions, role, contentEditable } = this.state;
+        if (role=='admin') contentEditable = true
         Moment.locale('en');
         return (
             <div className="col-md-12">                
                 <div className="row g-5">
                     <div className="col-md-8">
                         <div className="blog-post">
-                            <h2 className="blog-post-title">{recipe.name}</h2>
+                            <h2 className="blog-post-title" contentEditable={contentEditable} suppressContentEditableWarning={true} onKeyUp={(e)=>{this.handleChange('name', e.currentTarget.textContent)}} onBlur={this.handleSubmitRecipe}>{recipe.name}</h2>
                             <p className="blog-post-meta">{Moment(recipe.createdDate).format('DD/MM/YYYY')}</p>
-                            <p>{recipe.description}</p>
+                            <p contentEditable={contentEditable} suppressContentEditableWarning={true}>{recipe.description}</p>
                             <hr/>
                             <h3>Instructions</h3>
                             {recipeInstructions.map((recipeInstruction, index) =>

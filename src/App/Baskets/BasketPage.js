@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { basketService, recipeIngredientService, basketRecipeIngredientService } from '../../_services';
+import { basketService, basketRecipeIngredientService } from '../../_services';
 class BasketPage extends React.Component {
     constructor(props) {
         super(props);

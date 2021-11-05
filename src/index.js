@@ -1,6 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { App, Header, Footer } from './App';
+import App from './App/route';
+import Header from './App/Header';
+import Footer from './App/Footer';
+import reportWebVitals from './reportWebVitals';
 
 render(
     <Header />,
@@ -8,9 +11,10 @@ render(
 );
 render (
     <App />,
-    document.getElementById('app')
+    document.getElementById('root')
 );
 render (
     <Footer />,
     document.getElementById('footer')
 );
+reportWebVitals();
