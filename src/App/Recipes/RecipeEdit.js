@@ -79,7 +79,7 @@ class RecipeEdit extends React.Component {
             <div className="col-md-12">
                 <h1>Recipe {id}</h1>
                 <form  onSubmit={this.handleSubmit} encType="multipart/form-data">
-                    <div class='row'>
+                    <div className='row'>
                         <div className="col-md-6">
                             <img
                                 className="ref"

@@ -8,6 +8,21 @@ Created : 2016-06-02
 Last update : 2016-10-19
 
 ============================================================== */
+/* Custom Yummi */
+.yummi-color-dark {
+    background-color: rgb(0, 77, 64) !important;
+    border-color: rgb(0, 77, 64) !important;
+}
+
+.yummi-color {
+    background-color: rgb(38, 166, 154) !important;
+    border-color: rgb(38, 166, 154) !important;
+}
+
+.yummi-color-light {
+    background-color: rgb(128, 203, 196) !important;
+    border-color: rgb(128, 203, 196) !important;
+}
 
 /* MEGAMENU STYLE
 =================================*/
@@ -36,6 +51,7 @@ nav.bootsnav .dropdown.megamenu-fw .dropdown-menu {
     left: 0;
     right: 0;
 }
+
 
 /* Navbar
 =================================*/
@@ -324,6 +340,7 @@ ul.cart-list > li.total > span{
     padding: 10px 0;
     display: none;
 }
+
 
 .top-search input.form-control{
     background-color: transparent;
@@ -1280,7 +1297,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     /* Tabs
     =================================*/ 
     nav.navbar.bootsnav .megamenu-content.tabbed{
-        padding-left: 0 !mportant;
+        padding-left: 0 !important;
     }
     
     nav.navbar.bootsnav .tabbed > li{

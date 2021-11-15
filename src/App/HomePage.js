@@ -38,10 +38,10 @@ class HomePage extends React.Component {
         
         return (
             <div className="album py-5">
-                <h4 className="display-4 text-center">Welcome on Yummi &#128523;</h4>
+                <h4 className="display-4 text-center">Bienvenue sur Yummi &#128523;</h4>
                 <div className="container">
                     <br/>
-                    <h4 className="display-6">All recipes</h4>
+                    <h4 className="display-6">Toutes les recettes</h4>
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         {recipes.map((recipe, index) =>
                             <div className="col" key={index}>
@@ -56,13 +56,13 @@ class HomePage extends React.Component {
                                         <p className="card-text" style={{fontWeight: "bold"}}>{recipe.name}</p>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="btn-group">
-                                                <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={'/viewRecipe/'+recipe.id} style={{textDecoration: 'auto', color: 'dimgray'}}>View</Link></button>
+                                                <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={'/viewRecipe/'+recipe.id} style={{textDecoration: 'auto', color: 'dimgray'}}>Voir</Link></button>
                                                 {role=='admin'&&
-                                                    <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={'/editRecipe/'+recipe.id} style={{textDecoration: 'auto', color: 'dimgray'}}>Edit</Link></button>
+                                                    <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={'/editRecipe/'+recipe.id} style={{textDecoration: 'auto', color: 'dimgray'}}>Modifier</Link></button>
                                                 }
-                                                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={()=>{this.addBasket(recipe.id)}}>Add</button>
+                                                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={()=>{this.addBasket(recipe.id)}}>Ajouter</button>
                                             </div>
-                                            <small className="text-muted">{new Intl.DateTimeFormat("en-GB", {
+                                            <small className="text-muted">{new Intl.DateTimeFormat("fr-FR", {
                                                 year: "numeric",
                                                 month: "long",
                                                 day: "2-digit"
@@ -83,7 +83,7 @@ class HomePage extends React.Component {
                     )}
                     <small>now</small>
                     </ToastHeader>
-                    <ToastBody>You add the recipe on your basket with sucess</ToastBody>
+                    <ToastBody>Recette ajoutée au panier avec succès</ToastBody>
                 </Toast>
                 </ToastContainer>
             </div>

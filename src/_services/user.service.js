@@ -13,7 +13,7 @@ export const userService = {
     getUserById
 };
 
-function login(username, password) {
+async function login(username, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,8 +21,8 @@ function login(username, password) {
     };
     return fetch(`${config.apiUrl}/user`, requestOptions)
         .then(handleLogin)
-        .then(user => {
-            getUserByUsername(username)
+        .then(async user => {
+            await getUserByUsername(username)
             .then(user=>{
                 localStorage.setItem('role', btoa(encodeURIComponent(user.role)));
                 localStorage.setItem('id', JSON.stringify(user.id));
@@ -73,7 +73,7 @@ function editUser(id, user) {
     return fetch(`${config.apiUrl}/api/Users/${id}`, requestOptions).then(handleResponse);
 }
 
-function signup(username, password) {
+async function signup(username, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -81,8 +81,8 @@ function signup(username, password) {
     };
     return fetch(`${config.apiUrl}/api/Users`, requestOptions)
         .then(handleLogin)
-        .then(user => {
-            getUserByUsername(username)
+        .then(async user => {
+            await getUserByUsername(username)
             .then(user=>{
                 localStorage.setItem('role', btoa(encodeURIComponent(user.role)));
                 localStorage.setItem('id', JSON.stringify(user.id));

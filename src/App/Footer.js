@@ -13,7 +13,7 @@ class Footer extends React.Component {
         const { year, applicationName,creator } = this.state;
         return (
             
-            <footer className="bg-dark mt-auto p-3 text-center  text-white">    
+            <footer className="yummi-color-dark mt-auto p-3 text-center text-white">    
                 <div className="container">
                 © {year} - {applicationName} by 
                 <a> </a>

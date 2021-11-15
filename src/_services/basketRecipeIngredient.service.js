@@ -7,7 +7,9 @@ export const basketRecipeIngredientService = {
     getBasketRecipeIngredientById,
     updateBasketRecipeIngredient,
     createBasketRecipeIngredient,
-    getBasketRecipeIngredientByUser
+    getBasketRecipeIngredientByUser,
+    GetBasketRecipeIngredientGroupBy,
+    updateBasketByIngredientMeasure
 };
 
 function logout() {
@@ -49,6 +51,15 @@ function getBasketRecipeIngredientByUser(id) {
     };
     return fetch(`${config.apiUrl}/api/User/${id}/basketRecipeIngredient`, requestOptions).then(handleResponse);
 }
+
+function GetBasketRecipeIngredientGroupBy(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/User/${id}/BasketRecipeIngredientGroupBy`, requestOptions).then(handleResponse);
+}
+
 function updateBasketRecipeIngredient(id, basketRecipeIngredient) {
     const requestOptions = {
         method: 'PUT',
@@ -56,6 +67,14 @@ function updateBasketRecipeIngredient(id, basketRecipeIngredient) {
         body: JSON.stringify(basketRecipeIngredient)
     };
     return fetch(`${config.apiUrl}/api/basketRecipeIngredient/${id}`, requestOptions).then(handleResponse);
+}
+
+function updateBasketByIngredientMeasure(ingredientId, measureId, userId) {
+    const requestOptions = {
+        method: 'GET',
+        headers:   authHeader()
+    };
+    return fetch(`${config.apiUrl}/api/BasketRecipeIngredient/ingredient/${ingredientId}/measure/${measureId}/user/${userId}`, requestOptions).then(handleResponse);
 }
 
 async function createBasketRecipeIngredient(basketRecipeIngredient) {
