@@ -66,12 +66,12 @@ class IngredientPage extends React.Component {
                     <button className="btn btn-warning" onClick={() => this.props.history.goBack()}>Back</button>
                 </div>
                 <ToastContainer className="p-3" position='bottom-end'>
-                <Toast onClose={() => this.setState({ remove: false })} delay={4000} show={remove} autohide animation bg={succed ? 'success' : "danger"}>
+                <Toast onClose={() => this.setState({ remove: false })} delay={40000} show={remove} autohide animation bg={succed ? 'success' : "danger"}>
                     <ToastHeader>
                     <strong className="me-auto">Suppression {succed ? 'en succès' : "en échec"}</strong>          
                     <small>now</small>
                     </ToastHeader>
-                    <ToastBody>{message}</ToastBody>
+                    <ToastBody className={succed ? '' : "text-white"}>{message}</ToastBody>
                 </Toast>
                 </ToastContainer>
             </div>

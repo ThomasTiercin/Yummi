@@ -73,7 +73,7 @@ class UserPage extends React.Component {
                     <strong className="me-auto">Suppression {succed ? 'en succès' : "en échec"}</strong>          
                     <small>now</small>
                     </ToastHeader>
-                    <ToastBody>{message}</ToastBody>
+                    <ToastBody className={succed ? '' : "text-white"}>{message}</ToastBody>
                 </Toast>
                 </ToastContainer>
             </div>
